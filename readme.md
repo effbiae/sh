@@ -1,8 +1,3 @@
-# p 
-
-- a native library to interface kdb+ and python
-- plus an experimental convenience wrapper
-
 ## Goal
 
 Make it easier to use python libraries in q than in native python.
@@ -10,18 +5,15 @@ Make it easier to use python libraries in q than in native python.
 ## Contents
 
   - [p.c](p.c) a library to interface kdb+ and python
-  - [p.k](p.k) adds a 'pythonic' feel to python in q (experimental)
-  - [p.q](p.q) load this file to define .p (deprecated - use pyutil)
+  - [p.k](p.k) adds a python feel to python in q
+  - [configure](configure) script to produce a makefile to build the library
   - [t.q](t.q) contains tests for `make test`
-  - [configure](configure) (and [configure.q](configure.q)) a script to produce a makefile to build the library
 
-p.q and p.k are independent: each depends only on the native library
-
-## Quick start
+## Quick Start
 
   `$ ./configure && make test`
 
-### Two ways of doing the same thing:
+### The Short and the Long
 
 ```
   $ q p.k
@@ -33,10 +25,9 @@ p.q and p.k are independent: each depends only on the native library
   hi
   3
 ```
-- low level
+- or
 
 ```
-  $ q p.q
   q).p.repr .p.import`sys
   "<module 'sys' (built-in)>"
   q).p.getj .p.call[.p.getattr[.p.getattr[.p.import`sys;`stdout];`write];enlist"hi\n";()!()]
@@ -83,7 +74,7 @@ p.q and p.k are independent: each depends only on the native library
 
 ### A Closer Look
 
-- .p.import is the only function needed to use python modules in q.
+- `.p.import` is the only function needed to use python modules in q.
 
 ```
   q).p.import`bs4
@@ -128,16 +119,4 @@ p.q and p.k are independent: each depends only on the native library
   q)import`urllib
   q)s:bs[urllib[`request`urlopen;"http://code.kx.com/q/ref/adverbs/"]`;"html.parser"]
   q)h:s[`find_all;`h2]
-```
-
-## p.c
-
-*c code may not documented?*
-
-```
-runs        | code
-set         | code
-import      | code
-getattr     | code
-..
 ```
