@@ -3,11 +3,15 @@
 - a native library to interface kdb+ and python
 - plus an experimental convenience wrapper
 
+## Goal
+
+Make it easier to use python libraries in q than in native python.
+
 ## Contents
 
   - [p.c](p.c) a library to interface kdb+ and python
   - [p.k](p.k) adds a 'pythonic' feel to python in q (experimental)
-  - [p.q](p.q) load this file to define .p (deprecated - use pyutils)
+  - [p.q](p.q) load this file to define .p (deprecated - use pyutil)
   - [t.q](t.q) contains tests for `make test`
   - [configure](configure) (and [configure.q](configure.q)) a script to produce a makefile to build the library
 
@@ -40,7 +44,6 @@ p.q and p.k are independent: each depends only on the native library
   3
 ```
 
-- The goal of the experiment is to make it easier to use python libraries in q than in native python.
 
 ### Example
 
